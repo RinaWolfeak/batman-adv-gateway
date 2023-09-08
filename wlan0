@@ -1,0 +1,6 @@
+auto wlan0
+iface wlan0 inet6 manual
+    wireless-channel 1 # Any channel from 1-14
+    wireless-essid iot-mesh # Your network name here
+    wireless-mode ad-hoc
+    wireless-ap 02:12:34:56:78:9A # This pre-sets your CELL id
