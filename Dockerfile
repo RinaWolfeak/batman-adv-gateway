@@ -1,5 +1,5 @@
 FROM debian:bullseye
-RUN apt update -y && apt install -y batctl net-tools wireless-tools dnsmasq
+RUN apt update -y && apt install -y batctl net-tools wireless-tools dnsmasq iptables
 CMD ["bash", "/start-batman-adv.sh"]
 RUN echo 'batman-adv' | tee --append /etc/modules
 RUN echo 'denyinterfaces wlan0' | tee --append /etc/dhcpcd.conf
