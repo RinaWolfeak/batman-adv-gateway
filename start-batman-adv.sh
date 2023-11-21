@@ -39,6 +39,6 @@ iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLISHED -
 iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 # Activates the interfaces for batman-adv
 ifconfig wlan0 up
-ifconfig bat0 up # bat0 is created via the first command
+ifconfig bat0 up
 ifconfig bat0 192.168.199.1/24
 sleep infinity
