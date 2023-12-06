@@ -3,4 +3,3 @@ iface wlan0 inet6 manual
     wireless-channel 1 
     wireless-essid iot-mesh
     wireless-mode ad-hoc
-    wireless-ap 02:12:34:56:78:9A
