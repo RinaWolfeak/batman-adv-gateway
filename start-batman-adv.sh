@@ -23,6 +23,7 @@ if [ ! -f /etc/network/interfaces.d/wlan0 ]
 then
  cp /source/wlan0 /etc/network/interfaces.d/
 fi
+nsenter -t 1 -m -u -i -n apt update -y && apt install -y batctl dnsmasq
 
 # Tell batman-adv which interface to use
 batctl if add wlan0
