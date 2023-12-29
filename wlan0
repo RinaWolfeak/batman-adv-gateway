@@ -1,5 +1,4 @@
 auto wlan0
 iface wlan0 inet6 manual
     wireless-channel 1 
-    wireless-essid iot-mesh
     wireless-mode ad-hoc
