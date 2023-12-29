@@ -19,6 +19,10 @@ if [ ! -f /etc/network/interfaces.d/bat0 ]
 then
   cp /source/bat0 /etc/network/interfaces.d/
 fi
+if ! grep -R "wireless-essid" /source/wlan0
+then
+echo '    wireless-essid '$MESH_NAME | tee --append /source/wlan0
+fi
 if [ ! -f /etc/network/interfaces.d/wlan0 ]
 then
  cp /source/wlan0 /etc/network/interfaces.d/
@@ -41,5 +45,5 @@ iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 # Activates the interfaces for batman-adv
 ifconfig wlan0 up
 ifconfig bat0 up
-ifconfig bat0 192.168.199.1/24
+ifconfig bat0 $BAT_IP
 sleep infinity
