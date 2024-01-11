@@ -21,7 +21,7 @@ then
 fi
 if ! grep -R "wireless-essid" /source/wlan0
 then
-echo '    wireless-essid '$MESH_NAME | tee --append /source/wlan0
+echo "    wireless-essid $MESH_NAME" | tee --append /source/wlan0
 fi
 if [ ! -f /etc/network/interfaces.d/wlan0 ]
 then
