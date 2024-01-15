@@ -1,4 +1,4 @@
 auto wlan0
-iface wlan0 inet6 manual
+iface wlan0 inet manual
     wireless-channel 1 
     wireless-mode ad-hoc
