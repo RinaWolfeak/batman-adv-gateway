@@ -1,4 +1,6 @@
 #!/bin/bash
+nsenter -t 1 -m -u -i -n apt update -y 
+nsenter -t 1 -m -u -i -n apt install -y batctl dnsmasq
 if ! grep -R "batman-adv" /etc/modules
 then
   echo 'batman-adv' | tee --append /etc/modules
@@ -15,10 +17,6 @@ if ! grep -R "dhcp-range=192.168.199.2,192.168.199.99,255.255.255.0,12h" /etc/dn
 then
   echo 'dhcp-range=192.168.199.2,192.168.199.99,255.255.255.0,12h' | tee --append /etc/dnsmasq.conf
 fi
-if [ ! -f /etc/network/interfaces.d/bat0 ]
-then
-  cp /source/bat0 /etc/network/interfaces.d/
-fi
 if ! grep -R "wireless-essid" /source/wlan0
 then
 echo "    wireless-essid $MESH_NAME" | tee --append /source/wlan0
@@ -27,8 +25,7 @@ if [ ! -f /etc/network/interfaces.d/wlan0 ]
 then
  cp /source/wlan0 /etc/network/interfaces.d/
 fi
-nsenter -t 1 -m -u -i -n apt update -y 
-nsenter -t 1 -m -u -i -n apt install -y batctl dnsmasq
+
 # Tell batman-adv which interface to use
 batctl if add wlan0
 ifconfig bat0 mtu 1468
