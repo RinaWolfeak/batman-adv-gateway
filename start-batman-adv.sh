@@ -32,7 +32,7 @@ ifconfig bat0 mtu 1468
 
 
 # Tell batman-adv this is an internet gateway
-batctl gw_mode server
+nsenter -t 1 -m -u -i -n batctl gw_mode server
 
 # Enable port forwarding
 sysctl -w net.ipv4.ip_forward=1
