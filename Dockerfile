@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04.3
 RUN apt update -y && apt install -y batctl net-tools wireless-tools dnsmasq iptables
 ADD wlan0 /source/wlan0
 ADD start-batman-adv.sh /start-batman-adv.sh
