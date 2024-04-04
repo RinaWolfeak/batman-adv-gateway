@@ -43,9 +43,9 @@ iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 ifconfig wlan0 up
 ifconfig bat0 up
 ifconfig bat0 $BAT_IP
-service dnsmasq restart
-service dhcpcd restart
-service networking restart
-ifdown wlan0
-ifup wlan0
+nsenter -t 1 -m -u -i -n service dnsmasq restart
+nsenter -t 1 -m -u -i -n service dhcpcd restart
+nsenter -t 1 -m -u -i -n service networking restart
+nsenter -t 1 -m -u -i -n ifdown wlan0
+nsenter -t 1 -m -u -i -n ifup wlan0
 sleep infinity
