@@ -27,9 +27,6 @@ then
 fi
 
 # Tell batman-adv which interface to use
-service dnsmasq restart
-service dhcpcd restart
-ifconfig wlan0 down
 batctl if add wlan0
 ifconfig bat0 mtu 1468
 
@@ -46,4 +43,9 @@ iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 ifconfig wlan0 up
 ifconfig bat0 up
 ifconfig bat0 $BAT_IP
+service dnsmasq restart
+service dhcpcd restart
+service networking restart
+ifdown wlan0
+ifup wlan0
 sleep infinity
