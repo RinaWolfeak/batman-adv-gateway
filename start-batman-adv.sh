@@ -27,6 +27,8 @@ then
 fi
 
 # Tell batman-adv which interface to use
+service dnsmasq restart
+service dhcpcd restart
 ifconfig wlan0 down
 batctl if add wlan0
 ifconfig bat0 mtu 1468
