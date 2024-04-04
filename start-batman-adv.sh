@@ -40,6 +40,7 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 iptables -A FORWARD -i eth0 -o bat0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i bat0 -o eth0 -j ACCEPT
 # Activates the interfaces for batman-adv
+ifconfig wlan0 down
 ifconfig wlan0 up
 ifconfig bat0 up
 ifconfig bat0 $BAT_IP
