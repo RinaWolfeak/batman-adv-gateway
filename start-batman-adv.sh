@@ -25,6 +25,14 @@ if [ ! -f /etc/network/interfaces.d/wlan0 ]
 then
  cp /source/wlan0 /etc/network/interfaces.d/
 fi
+if ! grep -R "address" /source/bat0
+then
+echo "    address $BAT_IP" | tee --append /source/bat0
+fi
+if [ ! -f /etc/network/interfaces.d/bat0 ]
+then
+ cp /source/bat0 /etc/network/interfaces.d/
+fi
 
 # Tell batman-adv which interface to use
 batctl if add wlan0
