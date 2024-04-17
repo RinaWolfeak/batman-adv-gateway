@@ -13,9 +13,9 @@ if ! grep -R "interface=bat0" /etc/dnsmasq.conf
 then
   echo 'interface=bat0' | tee --append /etc/dnsmasq.conf
 fi
-if ! grep -R "dhcp-range=192.168.199.2,192.168.199.99,255.255.255.0,12h" /etc/dnsmasq.conf
+if ! grep -R "dhcp-range=192.168.199.3,192.168.199.99,255.255.255.0,12h" /etc/dnsmasq.conf
 then
-  echo 'dhcp-range=192.168.199.2,192.168.199.99,255.255.255.0,12h' | tee --append /etc/dnsmasq.conf
+  echo 'dhcp-range=192.168.199.3,192.168.199.99,255.255.255.0,12h' | tee --append /etc/dnsmasq.conf
 fi
 if ! grep -R "wireless-essid" /source/wlan0
 then
